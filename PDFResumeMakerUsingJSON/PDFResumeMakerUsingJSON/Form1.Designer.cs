@@ -52,6 +52,7 @@ namespace PDFResumeMakerUsingJSON
             this.btnGeneratePDF.TabIndex = 1;
             this.btnGeneratePDF.Text = "&Generate PDF";
             this.btnGeneratePDF.UseVisualStyleBackColor = true;
+            this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
             // 
             // textBox1
             // 

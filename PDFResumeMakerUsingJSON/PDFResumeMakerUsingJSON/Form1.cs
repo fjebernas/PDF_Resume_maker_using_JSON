@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +17,7 @@ namespace PDFResumeMakerUsingJSON
     public partial class PDFResumeMakerUsingJSON : Form
     {
         private readonly string _path = @"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\json\DummyResume.json";
+        private string des;
 
         public PDFResumeMakerUsingJSON()
         {
@@ -33,10 +36,13 @@ namespace PDFResumeMakerUsingJSON
 
                 Resume myResume = JsonConvert.DeserializeObject<Resume>(jsonFromFile);
 
-                textBox1.Text = "Name: " + myResume.Name + Environment.NewLine +
+                des = "Name: " + myResume.Name + Environment.NewLine +
                                 "Age: " + myResume.Age + Environment.NewLine +
                                 "Course: " + myResume.Course + Environment.NewLine +
                                 "Address: " + myResume.Address;
+
+                textBox1.Text = des;
+
 
                 //Resume myResume = new Resume
                 //{
@@ -58,5 +64,23 @@ namespace PDFResumeMakerUsingJSON
 				// ignored
 			}
 		}
+
+        private void btnGeneratePDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Document doc = new Document();
+                PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\franc\Desktop\Resume.pdf", FileMode.Create));
+                doc.Open();
+                Paragraph p = new Paragraph(des);
+                doc.Add(p);
+                doc.Close();
+                MessageBox.Show("PDF successfully created");
+            }
+            catch (Exception ex)
+            {
+                // ignored
+            }
+        }
     }
 }
