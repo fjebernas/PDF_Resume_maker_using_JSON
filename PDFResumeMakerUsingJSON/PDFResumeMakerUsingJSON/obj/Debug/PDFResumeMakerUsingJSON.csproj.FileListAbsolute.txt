@@ -1,0 +1,12 @@
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\bin\Debug\PDFResumeMakerUsingJSON.exe.config
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\bin\Debug\PDFResumeMakerUsingJSON.exe
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\bin\Debug\PDFResumeMakerUsingJSON.pdb
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\bin\Debug\Newtonsoft.Json.dll
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\bin\Debug\Newtonsoft.Json.xml
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\obj\Debug\PDFResumeMakerUsingJSON.csproj.AssemblyReference.cache
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\obj\Debug\PDFResumeMakerUsingJSON.PDFResumeMakerUsingJSON.resources
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\obj\Debug\PDFResumeMakerUsingJSON.Properties.Resources.resources
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\obj\Debug\PDFResumeMakerUsingJSON.csproj.GenerateResource.cache
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\obj\Debug\PDFResumeMakerUsingJSON.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\obj\Debug\PDFResumeMakerUsingJSON.exe
+C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\obj\Debug\PDFResumeMakerUsingJSON.pdb
