@@ -16,8 +16,9 @@ namespace PDFResumeMakerUsingJSON
 {
     public partial class PDFResumeMakerUsingJSON : Form
     {
-        private readonly string _path = @"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\json\DummyResume.json";
-        private string des;
+        private string _path;       //path of json file
+        private string content;     //for the pdf's content
+        private string name;        //for the pdf's file name
 
         public PDFResumeMakerUsingJSON()
         {
@@ -28,38 +29,36 @@ namespace PDFResumeMakerUsingJSON
         {
 			try
 			{
-				string jsonFromFile;
-				using (var reader = new StreamReader(_path))
-				{
-					jsonFromFile = reader.ReadToEnd();
-				}
+                string jsonFromFile;
 
-                Resume myResume = JsonConvert.DeserializeObject<Resume>(jsonFromFile);
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                DialogResult result = openFileDialog.ShowDialog();      // Show the dialog.
+                if (result == DialogResult.OK)                          // Test result.
+                {
+                    _path = openFileDialog.FileName;
+                    try
+                    {
+                        jsonFromFile = File.ReadAllText(_path);
+                        Resume myResume = JsonConvert.DeserializeObject<Resume>(jsonFromFile);
 
-                des = "Name: " + myResume.Name + Environment.NewLine +
-                                "Age: " + myResume.Age + Environment.NewLine +
-                                "Course: " + myResume.Course + Environment.NewLine +
-                                "Address: " + myResume.Address;
+                        content = "Name: " + myResume.Name + Environment.NewLine +
+                              "Age: " + myResume.Age + Environment.NewLine +
+                              "Course: " + myResume.Course + Environment.NewLine +
+                              "School: " + myResume.School + Environment.NewLine +
+                              "Address: " + myResume.Address + Environment.NewLine +
+                              "Objective: " + myResume.Objective + Environment.NewLine +
+                              "Skills: " + myResume.Skills;
 
-                textBox1.Text = des;
-
-
-                //Resume myResume = new Resume
-                //{
-                //    Name = "Francis Joseph E. Bernas",
-                //    Age = 25,
-                //    Course = "Bachelor of Science in Computer Engineering",
-                //    Address = "Manila, Philippines"
-                //};
-
-                //string jsonToWrite = JsonConvert.SerializeObject(myResume, Formatting.Indented);
-
-                //textBox1.Text = jsonToWrite;
-
-
-                //var customerFromJson = JsonConvert.DeserializeObject<Customer>(jsonFromFile);
+                        name = myResume.Name;
+                        displayTxtBox.Text = content;
+                    }
+                    catch (IOException)
+                    {
+                        // ignored
+                    }
+                }
             }
-			catch (Exception ex)
+            catch (Exception)
 			{
 				// ignored
 			}
@@ -69,18 +68,47 @@ namespace PDFResumeMakerUsingJSON
         {
             try
             {
-                Document doc = new Document();
-                PdfWriter.GetInstance(doc, new FileStream(@"C:\Users\franc\Desktop\Resume.pdf", FileMode.Create));
+                FileStream destination = new FileStream(@"C:\Users\franc\Desktop\" + name + ".pdf", FileMode.Create);
+
+                Document doc = new Document(PageSize.A4, 25, 25, 30, 30);
+                PdfWriter writer = PdfWriter.GetInstance(doc, destination);
+                doc.AddAuthor("Francis Bernas");
+                doc.AddCreator("Francis Bernas");
+                doc.AddKeywords("PDF Resume");
+                doc.AddTitle("Resume - PDF creation using iTextSharp");
+
                 doc.Open();
-                Paragraph p = new Paragraph(des);
-                doc.Add(p);
+                doc.Add(new Paragraph(content));
                 doc.Close();
+                writer.Close();
+                destination.Close();
                 MessageBox.Show("PDF successfully created");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // ignored
+                MessageBox.Show("Load a JSON file first");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Resume newResume = new Resume
+            {
+                Name = "Francis Joseph E. Bernas",
+                Age = 25,
+                Course = "Bachelor of Science in Computer Engineering",
+                School = "Polytechnic University of the Philippines",
+                Address = "Manila, Philippines",
+                Objective = "To find a job where I can use my programming skills",
+                Skills = "C#, Python, HTML & CSS and JavaScript"
+            };
+
+            string jsonToWrite = JsonConvert.SerializeObject(newResume, Formatting.Indented);
+
+            displayTxtBox.Text = jsonToWrite;
+
+
+            //var customerFromJson = JsonConvert.DeserializeObject<Customer>(jsonFromFile);
         }
     }
 }

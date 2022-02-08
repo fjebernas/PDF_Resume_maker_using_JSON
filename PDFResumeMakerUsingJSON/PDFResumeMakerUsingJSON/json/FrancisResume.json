@@ -2,5 +2,8 @@
   "Name": "Francis Joseph E. Bernas",
   "Age": 25,
   "Course": "Bachelor of Science in Computer Engineering",
-  "Address": "Manila, Philippines"
+  "School": "Polytechnic University of the Philippines",
+  "Address": "Manila, Philippines",
+  "Objective": "To find a job where I can use my programming skills",
+  "Skills": "C#, Python, HTML & CSS and JavaScript"
 }
