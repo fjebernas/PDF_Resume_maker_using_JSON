@@ -29,6 +29,7 @@ namespace PDFResumeMakerUsingJSON
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PDFResumeMakerUsingJSON));
             this.btnLoadJSON = new System.Windows.Forms.Button();
             this.btnGeneratePDF = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -60,11 +61,14 @@ namespace PDFResumeMakerUsingJSON
             this.btnLoadJSON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadJSON.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadJSON.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
+            this.btnLoadJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadJSON.Image")));
             this.btnLoadJSON.Location = new System.Drawing.Point(0, 100);
             this.btnLoadJSON.Name = "btnLoadJSON";
-            this.btnLoadJSON.Size = new System.Drawing.Size(187, 75);
+            this.btnLoadJSON.Size = new System.Drawing.Size(208, 75);
             this.btnLoadJSON.TabIndex = 0;
-            this.btnLoadJSON.Text = "&Load JSON file";
+            this.btnLoadJSON.Text = "  &Load JSON file";
+            this.btnLoadJSON.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLoadJSON.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLoadJSON.UseVisualStyleBackColor = false;
             this.btnLoadJSON.Click += new System.EventHandler(this.btnLoadJSON_Click);
             // 
@@ -75,11 +79,14 @@ namespace PDFResumeMakerUsingJSON
             this.btnGeneratePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeneratePDF.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGeneratePDF.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
+            this.btnGeneratePDF.Image = ((System.Drawing.Image)(resources.GetObject("btnGeneratePDF.Image")));
             this.btnGeneratePDF.Location = new System.Drawing.Point(0, 252);
             this.btnGeneratePDF.Name = "btnGeneratePDF";
-            this.btnGeneratePDF.Size = new System.Drawing.Size(187, 75);
+            this.btnGeneratePDF.Size = new System.Drawing.Size(208, 75);
             this.btnGeneratePDF.TabIndex = 1;
-            this.btnGeneratePDF.Text = "&Generate PDF";
+            this.btnGeneratePDF.Text = "  &Generate PDF";
+            this.btnGeneratePDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGeneratePDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGeneratePDF.UseVisualStyleBackColor = false;
             this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
             // 
@@ -90,11 +97,14 @@ namespace PDFResumeMakerUsingJSON
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(0, 176);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 75);
+            this.button1.Size = new System.Drawing.Size(208, 75);
             this.button1.TabIndex = 0;
-            this.button1.Text = "&Write to JSON";
+            this.button1.Text = "  &Write to JSON";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -102,11 +112,11 @@ namespace PDFResumeMakerUsingJSON
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(32)))), ((int)(((byte)(46)))));
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
-            this.label1.Location = new System.Drawing.Point(232, 23);
+            this.label1.Location = new System.Drawing.Point(240, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(428, 30);
+            this.label1.Size = new System.Drawing.Size(469, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "PDF Resume Generator using JSON";
             // 
@@ -189,7 +199,7 @@ namespace PDFResumeMakerUsingJSON
             // 
             // txtBxFullName
             // 
-            this.txtBxFullName.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxFullName.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxFullName.Location = new System.Drawing.Point(353, 104);
             this.txtBxFullName.Multiline = true;
             this.txtBxFullName.Name = "txtBxFullName";
@@ -199,7 +209,7 @@ namespace PDFResumeMakerUsingJSON
             // 
             // txtBxAge
             // 
-            this.txtBxAge.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxAge.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxAge.Location = new System.Drawing.Point(674, 104);
             this.txtBxAge.Multiline = true;
             this.txtBxAge.Name = "txtBxAge";
@@ -209,7 +219,7 @@ namespace PDFResumeMakerUsingJSON
             // 
             // txtBxCourse
             // 
-            this.txtBxCourse.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxCourse.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxCourse.Location = new System.Drawing.Point(353, 160);
             this.txtBxCourse.Multiline = true;
             this.txtBxCourse.Name = "txtBxCourse";
@@ -219,7 +229,7 @@ namespace PDFResumeMakerUsingJSON
             // 
             // txtBxSchool
             // 
-            this.txtBxSchool.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxSchool.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxSchool.Location = new System.Drawing.Point(353, 219);
             this.txtBxSchool.Multiline = true;
             this.txtBxSchool.Name = "txtBxSchool";
@@ -229,7 +239,7 @@ namespace PDFResumeMakerUsingJSON
             // 
             // txtBxObjective
             // 
-            this.txtBxObjective.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxObjective.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxObjective.Location = new System.Drawing.Point(353, 275);
             this.txtBxObjective.Multiline = true;
             this.txtBxObjective.Name = "txtBxObjective";
@@ -239,7 +249,7 @@ namespace PDFResumeMakerUsingJSON
             // 
             // txtBxSkills
             // 
-            this.txtBxSkills.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxSkills.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxSkills.Location = new System.Drawing.Point(353, 362);
             this.txtBxSkills.Multiline = true;
             this.txtBxSkills.Name = "txtBxSkills";
@@ -249,7 +259,7 @@ namespace PDFResumeMakerUsingJSON
             // 
             // txtBxAddress
             // 
-            this.txtBxAddress.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxAddress.Location = new System.Drawing.Point(353, 458);
             this.txtBxAddress.Multiline = true;
             this.txtBxAddress.Name = "txtBxAddress";
@@ -266,7 +276,7 @@ namespace PDFResumeMakerUsingJSON
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 76);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(189, 451);
+            this.panel1.Size = new System.Drawing.Size(211, 451);
             this.panel1.TabIndex = 6;
             // 
             // panel2
@@ -302,6 +312,8 @@ namespace PDFResumeMakerUsingJSON
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel2);
             this.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "PDFResumeMakerUsingJSON";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
