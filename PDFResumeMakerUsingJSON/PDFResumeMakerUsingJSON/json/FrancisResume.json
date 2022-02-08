@@ -1,9 +1,17 @@
 {
-  "Name": "Francis Joseph E. Bernas",
-  "Age": 25,
-  "Course": "Bachelor of Science in Computer Engineering",
-  "School": "Polytechnic University of the Philippines",
+  "FullName": "Francis Joseph E. Bernas",
   "Address": "Manila, Philippines",
-  "Objective": "To find a job where I can use my programming skills",
-  "Skills": "C#, Python, HTML & CSS and JavaScript"
+  "ContactNo": "09511929716",
+  "Email": "francis.3.6.joseph@gmail.com",
+  "Objective": "Software engineer with Bachelor’s degree in Computer Engineering and familiarity with several programming languages.Seeking for the position of a Programmer at Lorem Ipsum to utilize teamwork and leadership skills in coordinating the effort of programmers. Also, bringing exceptional skills in designing, coding, testing, and implementing customizations to exceed customer expectations.",
+  "College": "Polytechnic University of the Philippines",
+  "CollegeDetail1": "• Bachelor of Science in Computer Engineering",
+  "CollegeDetail2": "• Involved in building of a website for the accreditation of the college department",
+  "Highschool": "Jose Abad Santos High School",
+  "Elementary": "Isabelo delos Reyes Elementary School",
+  "Skill1": "• Proficient in C#, Python, HTML & CSS and Javascript",
+  "Skill2": "• Team player who can also work independently",
+  "Skill3": "• Able to contribue to building a positive team spirit",
+  "Skill4": "• Capable of working efficiently under load and stress",
+  "Closing": "Eager to learn to new skills and knowledge that will help the company and my career"
 }
