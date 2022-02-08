@@ -50,7 +50,14 @@ namespace PDFResumeMakerUsingJSON
                               "Skills: " + myResume.Skills;
 
                         name = myResume.Name;
-                        displayTxtBox.Text = content;
+
+                        txtBxFullName.Text = myResume.Name;
+                        txtBxAge.Text = Convert.ToString(myResume.Age);
+                        txtBxCourse.Text = myResume.Course;
+                        txtBxSchool.Text = myResume.School;
+                        txtBxAddress.Text = myResume.Address;
+                        txtBxObjective.Text = myResume.Objective;
+                        txtBxSkills.Text = myResume.Skills;
                     }
                     catch (IOException)
                     {
@@ -105,7 +112,6 @@ namespace PDFResumeMakerUsingJSON
 
             string jsonToWrite = JsonConvert.SerializeObject(newResume, Formatting.Indented);
 
-            displayTxtBox.Text = jsonToWrite;
 
 
             //var customerFromJson = JsonConvert.DeserializeObject<Customer>(jsonFromFile);
