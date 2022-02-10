@@ -32,7 +32,7 @@ namespace PDFResumeMakerUsingJSON
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PDFResumeMakerUsingJSON));
             this.btnLoadJSON = new System.Windows.Forms.Button();
             this.btnGeneratePDF = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnWriteJSON = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxSkills = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtBxNotes = new System.Windows.Forms.TextBox();
+            this.btnSaveToJSON = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -92,23 +93,23 @@ namespace PDFResumeMakerUsingJSON
             this.btnGeneratePDF.UseVisualStyleBackColor = false;
             this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
             // 
-            // button1
+            // btnWriteJSON
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(18)))), ((int)(((byte)(53)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(0, 176);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(208, 75);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "  &Write to JSON";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnWriteJSON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(18)))), ((int)(((byte)(53)))));
+            this.btnWriteJSON.FlatAppearance.BorderSize = 0;
+            this.btnWriteJSON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWriteJSON.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWriteJSON.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
+            this.btnWriteJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnWriteJSON.Image")));
+            this.btnWriteJSON.Location = new System.Drawing.Point(0, 176);
+            this.btnWriteJSON.Name = "btnWriteJSON";
+            this.btnWriteJSON.Size = new System.Drawing.Size(208, 75);
+            this.btnWriteJSON.TabIndex = 0;
+            this.btnWriteJSON.Text = "  &Write to JSON";
+            this.btnWriteJSON.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnWriteJSON.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnWriteJSON.UseVisualStyleBackColor = false;
+            this.btnWriteJSON.Click += new System.EventHandler(this.btnWriteJSON_Click);
             // 
             // label1
             // 
@@ -153,6 +154,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxFullName.ReadOnly = true;
             this.txtBxFullName.Size = new System.Drawing.Size(247, 32);
             this.txtBxFullName.TabIndex = 5;
+            this.txtBxFullName.Tag = "textBox";
             // 
             // txtBxContactNo
             // 
@@ -163,17 +165,19 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxContactNo.ReadOnly = true;
             this.txtBxContactNo.Size = new System.Drawing.Size(169, 32);
             this.txtBxContactNo.TabIndex = 5;
+            this.txtBxContactNo.Tag = "textBox";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(18)))), ((int)(((byte)(53)))));
             this.panel1.Controls.Add(this.btnLoadJSON);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnWriteJSON);
+            this.panel1.Controls.Add(this.btnSaveToJSON);
             this.panel1.Controls.Add(this.btnGeneratePDF);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 76);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(211, 509);
+            this.panel1.Size = new System.Drawing.Size(211, 522);
             this.panel1.TabIndex = 6;
             // 
             // panel2
@@ -206,6 +210,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxAddress.ReadOnly = true;
             this.txtBxAddress.Size = new System.Drawing.Size(247, 32);
             this.txtBxAddress.TabIndex = 5;
+            this.txtBxAddress.Tag = "textBox";
             // 
             // label5
             // 
@@ -227,6 +232,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtbxEmail.ReadOnly = true;
             this.txtbxEmail.Size = new System.Drawing.Size(226, 32);
             this.txtbxEmail.TabIndex = 5;
+            this.txtbxEmail.Tag = "textBox";
             // 
             // label6
             // 
@@ -249,6 +255,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxObjective.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBxObjective.Size = new System.Drawing.Size(554, 97);
             this.txtBxObjective.TabIndex = 5;
+            this.txtBxObjective.Tag = "textBox";
             // 
             // label7
             // 
@@ -271,6 +278,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxEducation.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBxEducation.Size = new System.Drawing.Size(247, 106);
             this.txtBxEducation.TabIndex = 5;
+            this.txtBxEducation.Tag = "textBox";
             // 
             // label8
             // 
@@ -293,6 +301,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxSkills.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBxSkills.Size = new System.Drawing.Size(226, 106);
             this.txtBxSkills.TabIndex = 5;
+            this.txtBxSkills.Tag = "textBox";
             // 
             // label9
             // 
@@ -314,13 +323,33 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxNotes.ReadOnly = true;
             this.txtBxNotes.Size = new System.Drawing.Size(554, 63);
             this.txtBxNotes.TabIndex = 5;
+            this.txtBxNotes.Tag = "textBox";
+            // 
+            // btnSaveToJSON
+            // 
+            this.btnSaveToJSON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(18)))), ((int)(((byte)(53)))));
+            this.btnSaveToJSON.FlatAppearance.BorderSize = 0;
+            this.btnSaveToJSON.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveToJSON.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveToJSON.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
+            this.btnSaveToJSON.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveToJSON.Image")));
+            this.btnSaveToJSON.Location = new System.Drawing.Point(0, 371);
+            this.btnSaveToJSON.Name = "btnSaveToJSON";
+            this.btnSaveToJSON.Size = new System.Drawing.Size(208, 75);
+            this.btnSaveToJSON.TabIndex = 1;
+            this.btnSaveToJSON.Text = "  &Save to JSON";
+            this.btnSaveToJSON.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveToJSON.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSaveToJSON.UseVisualStyleBackColor = false;
+            this.btnSaveToJSON.Visible = false;
+            this.btnSaveToJSON.Click += new System.EventHandler(this.btnSaveToJSON_Click);
             // 
             // PDFResumeMakerUsingJSON
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(66)))), ((int)(((byte)(87)))));
-            this.ClientSize = new System.Drawing.Size(947, 585);
+            this.ClientSize = new System.Drawing.Size(947, 598);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtbxEmail);
             this.Controls.Add(this.txtBxContactNo);
@@ -358,7 +387,7 @@ namespace PDFResumeMakerUsingJSON
 
         private System.Windows.Forms.Button btnLoadJSON;
         private System.Windows.Forms.Button btnGeneratePDF;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnWriteJSON;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -378,6 +407,7 @@ namespace PDFResumeMakerUsingJSON
         private System.Windows.Forms.TextBox txtBxSkills;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBxNotes;
+        private System.Windows.Forms.Button btnSaveToJSON;
     }
 }
 

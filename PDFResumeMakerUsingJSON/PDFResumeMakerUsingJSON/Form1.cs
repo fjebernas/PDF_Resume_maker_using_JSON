@@ -30,7 +30,15 @@ namespace PDFResumeMakerUsingJSON
 
         private void btnLoadJSON_Click(object sender, EventArgs e)
         {
-			try
+            foreach (TextBox tb in this.Controls.OfType<TextBox>())
+            {
+                tb.Text = "";
+                tb.ReadOnly = true;
+            }
+
+            btnSaveToJSON.Visible = false;
+
+            try
 			{
                 string jsonFromFile;
 
@@ -52,14 +60,14 @@ namespace PDFResumeMakerUsingJSON
                         txtbxEmail.Text = myResume.Email;
                         txtBxObjective.Text = myResume.Objective;
                         txtBxEducation.Text = myResume.College + Environment.NewLine +
-                                              myResume.CollegeDetail1 + Environment.NewLine +
-                                              myResume.CollegeDetail2 + Environment.NewLine +
+                                              "• " + myResume.CollegeDetail1 + Environment.NewLine +
+                                              "• " + myResume.CollegeDetail2 + Environment.NewLine +
                                               myResume.Highschool + Environment.NewLine +
                                               myResume.Elementary;
-                        txtBxSkills.Text = myResume.Skill1 + Environment.NewLine +
-                                           myResume.Skill2 + Environment.NewLine +
-                                           myResume.Skill3 + Environment.NewLine +
-                                           myResume.Skill4;
+                        txtBxSkills.Text = "• " + myResume.Skill1 + Environment.NewLine +
+                                           "• " + myResume.Skill2 + Environment.NewLine +
+                                           "• " + myResume.Skill3 + Environment.NewLine +
+                                           "• " + myResume.Skill4;
                         txtBxNotes.Text = myResume.Closing;
 
                         fullName = myResume.FullName;
@@ -125,16 +133,16 @@ namespace PDFResumeMakerUsingJSON
 
                 paragraph.Add(new Phrase("Education" + "\n" + "\n", big));
                 paragraph.Add(new Phrase(college + "\n", normal));
-                paragraph.Add(new Phrase(collegeDetail1 + "\n", small));
-                paragraph.Add(new Phrase(collegeDetail2 + "\n" + "\n", small));
+                paragraph.Add(new Phrase("• " + collegeDetail1 + "\n", small));
+                paragraph.Add(new Phrase("• " + collegeDetail2 + "\n" + "\n", small));
                 paragraph.Add(new Phrase(highschool + "\n" + "\n", normal));
                 paragraph.Add(new Phrase(elementary + "\n" + "\n" + "\n" + "\n", normal));
 
                 paragraph.Add(new Phrase("Skills" + "\n" + "\n", big));
-                paragraph.Add(new Phrase(skill1 + "\n", normal));
-                paragraph.Add(new Phrase(skill2 + "\n", normal));
-                paragraph.Add(new Phrase(skill3 + "\n", normal));
-                paragraph.Add(new Phrase(skill4 + "\n" + "\n", normal));
+                paragraph.Add(new Phrase("• " + skill1 + "\n", normal));
+                paragraph.Add(new Phrase("• " + skill2 + "\n", normal));
+                paragraph.Add(new Phrase("• " + skill3 + "\n", normal));
+                paragraph.Add(new Phrase("• " + skill4 + "\n" + "\n", normal));
 
                 paragraph.Add(new Phrase(notes + "\n" + "\n" + "\n", normal));
 
@@ -151,32 +159,73 @@ namespace PDFResumeMakerUsingJSON
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnWriteJSON_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox tb in this.Controls.OfType<TextBox>())
+            {
+                tb.Text = "";
+                tb.ReadOnly = false;
+            }
+
+            btnSaveToJSON.Visible = true;
+
+            //Resume newResume = new Resume
+            //{
+            //    FullName = "Francis Joseph E. Bernas",
+            //    Address = "Manila, Philippines",
+            //    ContactNo = "09511929716",
+            //    Email = "francis.3.6.joseph@gmail.com",
+            //    Objective = "Software engineer with Bachelor’s degree in Computer Engineering and familiarity with several programming languages.Seeking for the position of a Programmer at Lorem Ipsum to utilize teamwork and leadership skills in coordinating the effort of programmers. Also, bringing exceptional skills in designing, coding, testing, and implementing customizations to exceed customer expectations.",
+            //    College = "Polytechnic University of the Philippines",
+            //    CollegeDetail1 = "Bachelor of Science in Computer Engineering",
+            //    CollegeDetail2 = "Involved in building of a website for the accreditation of the college department",
+            //    Highschool = "Jose Abad Santos High School",
+            //    Elementary = "Isabelo delos Reyes Elementary School",
+            //    Skill1 = "Proficient in C#, Python, HTML & CSS and Javascript",
+            //    Skill2 = "Team player who can also work independently",
+            //    Skill3 = "Able to contribue to building a positive team spirit",
+            //    Skill4 = "Capable of working efficiently under load and stress",
+            //    Closing = "Eager to learn to new skills and knowledge that will help the company and my career"
+            //};
+
+            //string jsonToWrite = JsonConvert.SerializeObject(newResume, Formatting.Indented);
+
+            //txtBxObjective.Text = jsonToWrite;
+
+            //var customerFromJson = JsonConvert.DeserializeObject<Customer>(jsonFromFile);
+        }
+
+        private void btnSaveToJSON_Click(object sender, EventArgs e)
         {
             Resume newResume = new Resume
             {
-                FullName = "Francis Joseph E. Bernas",
-                Address = "Manila, Philippines",
-                ContactNo = "09511929716",
-                Email = "francis.3.6.joseph@gmail.com",
-                Objective = "Software engineer with Bachelor’s degree in Computer Engineering and familiarity with several programming languages.Seeking for the position of a Programmer at Lorem Ipsum to utilize teamwork and leadership skills in coordinating the effort of programmers. Also, bringing exceptional skills in designing, coding, testing, and implementing customizations to exceed customer expectations.",
-                College = "Polytechnic University of the Philippines",
-                CollegeDetail1 = "• Bachelor of Science in Computer Engineering",
-                CollegeDetail2 = "• Involved in building of a website for the accreditation of the college department",
-                Highschool = "Jose Abad Santos High School",
-                Elementary = "Isabelo delos Reyes Elementary School",
-                Skill1 = "• Proficient in C#, Python, HTML & CSS and Javascript",
-                Skill2 = "• Team player who can also work independently",
-                Skill3 = "• Able to contribue to building a positive team spirit",
-                Skill4 = "• Capable of working efficiently under load and stress",
-                Closing = "Eager to learn to new skills and knowledge that will help the company and my career"
+                FullName = txtBxFullName.Text,
+                Address = txtBxAddress.Text,
+                ContactNo = txtBxContactNo.Text,
+                Email = txtbxEmail.Text,
+                Objective = txtBxObjective.Text,
+                College = txtBxEducation.Text,
+                Skill1 = txtBxSkills.Text,
+                Closing = txtBxNotes.Text
             };
 
             string jsonToWrite = JsonConvert.SerializeObject(newResume, Formatting.Indented);
 
-            txtBxObjective.Text = jsonToWrite;
-            
-            //var customerFromJson = JsonConvert.DeserializeObject<Customer>(jsonFromFile);
+            StreamWriter createJson;
+            createJson = File.CreateText(@"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\json\" + "newjson" + ".json");
+
+            createJson.Write(jsonToWrite);
+            createJson.Close();
+
+            MessageBox.Show("New JSON file successfully created");
+
+            foreach (TextBox tb in this.Controls.OfType<TextBox>())
+            {
+                tb.Text = "";
+                tb.ReadOnly = true;
+            }
+
+            btnSaveToJSON.Visible = false;
         }
     }
 }
