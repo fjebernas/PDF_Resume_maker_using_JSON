@@ -58,32 +58,34 @@ namespace PDFResumeMakerUsingJSON
                         txtBxContactNo.Text = myResume.ContactNo;
                         txtBxAddress.Text = myResume.Address;
                         txtbxEmail.Text = myResume.Email;
+
                         txtBxObjective.Text = myResume.Objective;
-                        txtBxEducation.Text = myResume.College + Environment.NewLine +
-                                              "• " + myResume.CollegeDetail1 + Environment.NewLine +
-                                              "• " + myResume.CollegeDetail2 + Environment.NewLine +
-                                              myResume.Highschool + Environment.NewLine +
-                                              myResume.Elementary;
-                        txtBxSkills.Text = "• " + myResume.Skill1 + Environment.NewLine +
-                                           "• " + myResume.Skill2 + Environment.NewLine +
-                                           "• " + myResume.Skill3 + Environment.NewLine +
-                                           "• " + myResume.Skill4;
+
+                        txtBxCollege.Text = myResume.College;
+                        txtBxDegree.Text = "• " + myResume.CollegeDetail1;
+                        txtBxAchievements.Text = "• " + myResume.CollegeDetail2;
+
+                        txtBxSkillOne.Text = "• " + myResume.Skill1;
+                        txtBxSkillTwo.Text = "• " + myResume.Skill2;
+                        txtBxSkillThree.Text = "• " + myResume.Skill3;
+
                         txtBxNotes.Text = myResume.Closing;
 
                         fullName = myResume.FullName;
                         contactNo = myResume.ContactNo;
                         address = myResume.Address;
                         email = myResume.Email;
+
                         objective = myResume.Objective;
+
                         college = myResume.College;
                         collegeDetail1 = myResume.CollegeDetail1;
                         collegeDetail2 = myResume.CollegeDetail2;
-                        highschool = myResume.Highschool;
-                        elementary = myResume.Elementary;
+
                         skill1 = myResume.Skill1;
                         skill2 = myResume.Skill2;
                         skill3 = myResume.Skill3;
-                        skill4 = myResume.Skill4;
+
                         notes = myResume.Closing;
 
                         isReadingJson = true;
@@ -104,8 +106,8 @@ namespace PDFResumeMakerUsingJSON
         {
             if(isReadingJson)
             {
-                //FileStream destination = new FileStream(@"C:\Users\franc\Desktop\" + name + ".pdf", FileMode.Create);
-                FileStream destination = new FileStream(@"C:\Users\franc\Desktop\lorem.pdf", FileMode.Create);
+                FileStream destination = new FileStream(@"C:\Users\franc\Desktop\" + name + ".pdf", FileMode.Create);
+                //FileStream destination = new FileStream(@"C:\Users\franc\Desktop\lorem.pdf", FileMode.Create);
 
                 BaseFont arial = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
                 iTextSharp.text.Font biggest = new iTextSharp.text.Font(arial, 28, iTextSharp.text.Font.BOLD);
@@ -134,15 +136,12 @@ namespace PDFResumeMakerUsingJSON
                 paragraph.Add(new Phrase("Education" + "\n" + "\n", big));
                 paragraph.Add(new Phrase(college + "\n", normal));
                 paragraph.Add(new Phrase("• " + collegeDetail1 + "\n", small));
-                paragraph.Add(new Phrase("• " + collegeDetail2 + "\n" + "\n", small));
-                paragraph.Add(new Phrase(highschool + "\n" + "\n", normal));
-                paragraph.Add(new Phrase(elementary + "\n" + "\n" + "\n" + "\n", normal));
+                paragraph.Add(new Phrase("• " + collegeDetail2 + "\n" + "\n" + "\n" + "\n", small));
 
                 paragraph.Add(new Phrase("Skills" + "\n" + "\n", big));
                 paragraph.Add(new Phrase("• " + skill1 + "\n", normal));
                 paragraph.Add(new Phrase("• " + skill2 + "\n", normal));
-                paragraph.Add(new Phrase("• " + skill3 + "\n", normal));
-                paragraph.Add(new Phrase("• " + skill4 + "\n" + "\n", normal));
+                paragraph.Add(new Phrase("• " + skill3 + "\n" + "\n", normal));
 
                 paragraph.Add(new Phrase(notes + "\n" + "\n" + "\n", normal));
 
@@ -151,16 +150,18 @@ namespace PDFResumeMakerUsingJSON
                 doc.Close();
                 writer.Close();
                 destination.Close();
-                MessageBox.Show("PDF successfully created");
+                MessageBox.Show("PDF successfully created", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {
-                MessageBox.Show("Load a JSON file first");
+                MessageBox.Show("Load a JSON file first", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
         }
 
         private void btnWriteJSON_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Please fill out the fields", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             foreach (TextBox tb in this.Controls.OfType<TextBox>())
             {
                 tb.Text = "";
@@ -204,15 +205,19 @@ namespace PDFResumeMakerUsingJSON
                 ContactNo = txtBxContactNo.Text,
                 Email = txtbxEmail.Text,
                 Objective = txtBxObjective.Text,
-                College = txtBxEducation.Text,
-                Skill1 = txtBxSkills.Text,
+                College = txtBxCollege.Text,
+                CollegeDetail1 = txtBxDegree.Text,
+                CollegeDetail2 = txtBxAchievements.Text,
+                Skill1 = txtBxSkillOne.Text,
+                Skill2 = txtBxSkillTwo.Text,
+                Skill3 = txtBxSkillThree.Text,
                 Closing = txtBxNotes.Text
             };
 
             string jsonToWrite = JsonConvert.SerializeObject(newResume, Formatting.Indented);
 
             StreamWriter createJson;
-            createJson = File.CreateText(@"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\json\" + "newjson" + ".json");
+            createJson = File.CreateText(@"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\json\" + newResume.FullName + ".json");
 
             createJson.Write(jsonToWrite);
             createJson.Close();

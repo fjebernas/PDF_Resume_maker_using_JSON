@@ -18,13 +18,10 @@ namespace PDFResumeMakerUsingJSON
         public string College { get; set; }
         public string CollegeDetail1 { get; set; }
         public string CollegeDetail2 { get; set; }
-        public string Highschool{ get; set; }
-        public string Elementary { get; set; }
 
         public string Skill1 { get; set; }
         public string Skill2 { get; set; }
         public string Skill3 { get; set; }
-        public string Skill4 { get; set; }
 
         public string Closing { get; set; }
 
