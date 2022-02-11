@@ -30,7 +30,7 @@ namespace PDFResumeMakerUsingJSON
 
         private void btnLoadJSON_Click(object sender, EventArgs e)
         {
-            foreach (TextBox tb in this.Controls.OfType<TextBox>())
+            foreach (TextBox tb in this.panelFields.Controls.OfType<TextBox>())
             {
                 tb.Text = "";
                 tb.ReadOnly = true;
@@ -87,6 +87,11 @@ namespace PDFResumeMakerUsingJSON
                         skill3 = myResume.Skill3;
 
                         notes = myResume.Closing;
+
+                        panelPlaceholder.Visible = false;
+                        panelFields.Visible = true;
+
+                        btnCancel.Visible = false;
 
                         isReadingJson = true;
                     }
@@ -151,7 +156,17 @@ namespace PDFResumeMakerUsingJSON
                 writer.Close();
                 destination.Close();
                 MessageBox.Show("PDF successfully created", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else
+
+                foreach (TextBox tb in this.panelFields.Controls.OfType<TextBox>())
+                {
+                    tb.Text = "";
+                    tb.ReadOnly = true;
+                }
+
+                panelPlaceholder.Visible = true;
+                panelFields.Visible = false;
+            } 
+            else
             {
                 MessageBox.Show("Load a JSON file first", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -162,7 +177,12 @@ namespace PDFResumeMakerUsingJSON
         {
             MessageBox.Show("Please fill out the fields", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            foreach (TextBox tb in this.Controls.OfType<TextBox>())
+            btnCancel.Visible = true;
+
+            panelPlaceholder.Visible = false;
+            panelFields.Visible = true;
+
+            foreach (TextBox tb in this.panelFields.Controls.OfType<TextBox>())
             {
                 tb.Text = "";
                 tb.ReadOnly = false;
@@ -222,14 +242,34 @@ namespace PDFResumeMakerUsingJSON
             createJson.Write(jsonToWrite);
             createJson.Close();
 
-            MessageBox.Show("New JSON file successfully created");
+            MessageBox.Show("New JSON file successfully created", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            foreach (TextBox tb in this.Controls.OfType<TextBox>())
+            foreach (TextBox tb in this.panelFields.Controls.OfType<TextBox>())
             {
                 tb.Text = "";
                 tb.ReadOnly = true;
             }
 
+            btnSaveToJSON.Visible = false;
+
+            panelPlaceholder.Visible = true;
+            panelFields.Visible = false;
+
+            btnCancel.Visible = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox tb in this.panelFields.Controls.OfType<TextBox>())
+            {
+                tb.Text = "";
+                tb.ReadOnly = true;
+            }
+
+            panelPlaceholder.Visible = true;
+            panelFields.Visible = false;
+
+            btnCancel.Visible = false;
             btnSaveToJSON.Visible = false;
         }
     }
