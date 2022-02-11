@@ -39,6 +39,7 @@ namespace PDFResumeMakerUsingJSON
             this.txtBxFullName = new System.Windows.Forms.TextBox();
             this.txtBxContactNo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveToJSON = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@ namespace PDFResumeMakerUsingJSON
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPlaceholder = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelFields.SuspendLayout();
@@ -88,6 +88,8 @@ namespace PDFResumeMakerUsingJSON
             this.btnLoadJSON.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLoadJSON.UseVisualStyleBackColor = false;
             this.btnLoadJSON.Click += new System.EventHandler(this.btnLoadJSON_Click);
+            this.btnLoadJSON.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            this.btnLoadJSON.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
             // 
             // btnGeneratePDF
             // 
@@ -106,6 +108,8 @@ namespace PDFResumeMakerUsingJSON
             this.btnGeneratePDF.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGeneratePDF.UseVisualStyleBackColor = false;
             this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
+            this.btnGeneratePDF.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            this.btnGeneratePDF.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
             // 
             // btnWriteJSON
             // 
@@ -124,6 +128,8 @@ namespace PDFResumeMakerUsingJSON
             this.btnWriteJSON.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnWriteJSON.UseVisualStyleBackColor = false;
             this.btnWriteJSON.Click += new System.EventHandler(this.btnWriteJSON_Click);
+            this.btnWriteJSON.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            this.btnWriteJSON.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
             // 
             // label1
             // 
@@ -195,6 +201,27 @@ namespace PDFResumeMakerUsingJSON
             this.panel1.Size = new System.Drawing.Size(211, 639);
             this.panel1.TabIndex = 6;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(18)))), ((int)(((byte)(53)))));
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.Location = new System.Drawing.Point(0, 489);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(208, 75);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
+            // 
             // btnSaveToJSON
             // 
             this.btnSaveToJSON.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(18)))), ((int)(((byte)(53)))));
@@ -213,6 +240,8 @@ namespace PDFResumeMakerUsingJSON
             this.btnSaveToJSON.UseVisualStyleBackColor = false;
             this.btnSaveToJSON.Visible = false;
             this.btnSaveToJSON.Click += new System.EventHandler(this.btnSaveToJSON_Click);
+            this.btnSaveToJSON.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            this.btnSaveToJSON.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
             // 
             // panel2
             // 
@@ -487,25 +516,6 @@ namespace PDFResumeMakerUsingJSON
             this.label12.Size = new System.Drawing.Size(422, 22);
             this.label12.TabIndex = 10;
             this.label12.Text = "Load or Write a JSON file to start working now";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(18)))), ((int)(((byte)(53)))));
-            this.btnCancel.FlatAppearance.BorderSize = 0;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(169)))), ((int)(((byte)(195)))));
-            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(0, 489);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(208, 75);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Visible = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // PDFResumeMakerUsingJSON
             // 

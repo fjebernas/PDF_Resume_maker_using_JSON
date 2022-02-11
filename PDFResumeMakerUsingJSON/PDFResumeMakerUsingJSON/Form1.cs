@@ -17,7 +17,7 @@ namespace PDFResumeMakerUsingJSON
     public partial class PDFResumeMakerUsingJSON : Form
     {
         private string _path;       //path of json file
-        private string name;        //for the pdf's file name
+        private string name;        //for the pdf and json file name
 
         private string fullName, contactNo, address, email, objective, college, collegeDetail1, collegeDetail2, highschool, elementary, skill1, skill2, skill3, skill4, notes;
 
@@ -52,7 +52,11 @@ namespace PDFResumeMakerUsingJSON
                         jsonFromFile = File.ReadAllText(_path);
                         Resume myResume = JsonConvert.DeserializeObject<Resume>(jsonFromFile);
 
-                        name = myResume.FullName;
+                        //name = myResume.FullName;
+                        string[] nameParts = SplitFullNameIntoNameAndSurname(myResume.FullName);
+                        nameParts[0] = nameParts[0].Replace(" ", "-");
+                        nameParts[1] = nameParts[1].ToUpper();
+                        name = nameParts[1] + "_" + nameParts[0];
 
                         txtBxFullName.Text = myResume.FullName;
                         txtBxContactNo.Text = myResume.ContactNo;
@@ -94,6 +98,8 @@ namespace PDFResumeMakerUsingJSON
                         btnCancel.Visible = false;
 
                         isReadingJson = true;
+
+
                     }
                     catch (IOException)
                     {
@@ -111,7 +117,7 @@ namespace PDFResumeMakerUsingJSON
         {
             if(isReadingJson)
             {
-                FileStream destination = new FileStream(@"C:\Users\franc\Desktop\" + name + ".pdf", FileMode.Create);
+                FileStream destination = new FileStream(@"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\created-pdfs\" + name + ".pdf", FileMode.Create);
                 //FileStream destination = new FileStream(@"C:\Users\franc\Desktop\lorem.pdf", FileMode.Create);
 
                 BaseFont arial = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
@@ -165,6 +171,8 @@ namespace PDFResumeMakerUsingJSON
 
                 panelPlaceholder.Visible = true;
                 panelFields.Visible = false;
+
+                isReadingJson = false;
             } 
             else
             {
@@ -189,30 +197,6 @@ namespace PDFResumeMakerUsingJSON
             }
 
             btnSaveToJSON.Visible = true;
-
-            //Resume newResume = new Resume
-            //{
-            //    FullName = "Francis Joseph E. Bernas",
-            //    Address = "Manila, Philippines",
-            //    ContactNo = "09511929716",
-            //    Email = "francis.3.6.joseph@gmail.com",
-            //    Objective = "Software engineer with Bachelor’s degree in Computer Engineering and familiarity with several programming languages.Seeking for the position of a Programmer at Lorem Ipsum to utilize teamwork and leadership skills in coordinating the effort of programmers. Also, bringing exceptional skills in designing, coding, testing, and implementing customizations to exceed customer expectations.",
-            //    College = "Polytechnic University of the Philippines",
-            //    CollegeDetail1 = "Bachelor of Science in Computer Engineering",
-            //    CollegeDetail2 = "Involved in building of a website for the accreditation of the college department",
-            //    Highschool = "Jose Abad Santos High School",
-            //    Elementary = "Isabelo delos Reyes Elementary School",
-            //    Skill1 = "Proficient in C#, Python, HTML & CSS and Javascript",
-            //    Skill2 = "Team player who can also work independently",
-            //    Skill3 = "Able to contribue to building a positive team spirit",
-            //    Skill4 = "Capable of working efficiently under load and stress",
-            //    Closing = "Eager to learn to new skills and knowledge that will help the company and my career"
-            //};
-
-            //string jsonToWrite = JsonConvert.SerializeObject(newResume, Formatting.Indented);
-
-            //txtBxObjective.Text = jsonToWrite;
-
             //var customerFromJson = JsonConvert.DeserializeObject<Customer>(jsonFromFile);
         }
 
@@ -234,10 +218,15 @@ namespace PDFResumeMakerUsingJSON
                 Closing = txtBxNotes.Text
             };
 
+            string[] nameParts = SplitFullNameIntoNameAndSurname(newResume.FullName);
+            nameParts[0] = nameParts[0].Replace(" ", "-");
+            nameParts[1] = nameParts[1].ToUpper();
+            name = nameParts[1] + "_" + nameParts[0];
+
             string jsonToWrite = JsonConvert.SerializeObject(newResume, Formatting.Indented);
 
             StreamWriter createJson;
-            createJson = File.CreateText(@"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\json\" + newResume.FullName + ".json");
+            createJson = File.CreateText(@"C:\Users\franc\source\repos\Assign#9PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\PDFResumeMakerUsingJSON\json\" + name + ".json");
 
             createJson.Write(jsonToWrite);
             createJson.Close();
@@ -271,6 +260,42 @@ namespace PDFResumeMakerUsingJSON
 
             btnCancel.Visible = false;
             btnSaveToJSON.Visible = false;
+        }
+
+
+        private void btn_MouseEnter(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackColor = Color.FromArgb(7, 6, 23);
+            //btn.Font = new System.Drawing.Font(btn.Font, FontStyle.Bold);
+            btn.Font = new System.Drawing.Font("Century Gothic", 13);
+        }
+
+        private void btn_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackColor = Color.FromArgb(9, 18, 53);
+            //btn.Font = new System.Drawing.Font(btn.Font, FontStyle.Regular);
+            btn.Font = new System.Drawing.Font("Century Gothic", 11);
+        }
+
+        public static string[] SplitFullNameIntoNameAndSurname(string pFullName)
+        {
+            string[] NameSurname = new string[2];
+            string[] NameSurnameTemp = pFullName.Split(' ');
+            for (int i = 0; i < NameSurnameTemp.Length; i++)
+            {
+                if (i < NameSurnameTemp.Length - 1)
+                {
+                    if (!string.IsNullOrEmpty(NameSurname[0]))
+                        NameSurname[0] += " " + NameSurnameTemp[i];
+                    else
+                        NameSurname[0] += NameSurnameTemp[i];
+                }
+                else
+                    NameSurname[1] = NameSurnameTemp[i];
+            }
+            return NameSurname;
         }
     }
 }
